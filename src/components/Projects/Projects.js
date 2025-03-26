@@ -36,9 +36,9 @@ function Projects() {
             <ProjectCard
               imgPath={bitsOfCode}
               isBlog={false}
-              title="Bits-0f-C0de"
+              title="Doravantec"
               description="My personal blog page build with Next.js and Tailwind Css which takes the content from makdown files and renders it using Next.js. Supports dark mode and easy to write blogs using markdown."
-              ghLink="https://github.com/rodrigo-xavier/Bits-0f-C0de"
+              ghLink="https://doravantec.medium.com/"
               demoLink="https://blogs.soumya-jit.tech/"
             />
           </Col>
