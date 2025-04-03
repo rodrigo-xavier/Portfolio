@@ -41,7 +41,7 @@ function About() {
         <Techstack />
 
         <h1 className="project-heading">
-          <strong className="purple">Tools</strong> I use
+          <strong className="purple">Ferramentas</strong> Que eu utilizo
         </h1>
         <Toolstack />
 

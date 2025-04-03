@@ -8,7 +8,7 @@ function Type() {
         strings: [
           "Desenvolvedor FullStack",
           "Python | Django | Node.js | React.js | Next.js | Docker",
-          "Desenvolvedor de Projetos Open Source",
+          "Desenvolvedor de Open Source",
           "Freelancer",
         ],
         autoStart: true,

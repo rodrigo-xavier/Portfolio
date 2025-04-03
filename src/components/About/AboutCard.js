@@ -8,33 +8,30 @@ function AboutCard() {
       <Card.Body>
         <blockquote className="blockquote mb-0">
           <p style={{ textAlign: "justify" }}>
-            Hi Everyone, I am <span className="purple">rodrigo-xavier  </span>
-            from <span className="purple"> Bhubaneswar, India.</span>
+            Olá, eu sou <span className="purple">Rodrigo M. Xavier  </span>
+            do <span className="purple"> Distrito Federal, Brasil.</span>
             <br />
-            I am currently employed as a software developer at Juspay.
-            <br />
-            I have completed Integrated MSc (IMSc) in Maths and Computing at BIT
-            Mesra.
+            Estou finalizando minha graduação em Engenharia de Computação pela UnB
             <br />
             <br />
-            Apart from coding, some other activities that I love to do!
+            Além de programar, estes são alguns hobbies que tenho:
           </p>
           <ul>
             <li className="about-activity">
-              <ImPointRight /> Playing Games
+              <ImPointRight /> Jogar Video Games
             </li>
             <li className="about-activity">
-              <ImPointRight /> Writing Tech Blogs
+              <ImPointRight /> Fazer Exercícios
             </li>
             <li className="about-activity">
-              <ImPointRight /> Travelling
+              <ImPointRight /> Recentemente tenho tentado bordados
             </li>
           </ul>
 
           <p style={{ color: "rgb(155 126 172)" }}>
-            "Strive to build things that make a difference!"{" "}
+            "Be excellent to each other!"{" "}
           </p>
-          <footer className="blockquote-footer">rodrigo-xavier</footer>
+          <footer className="blockquote-footer">Rodrigo Xavier</footer>
         </blockquote>
       </Card.Body>
     </Card>
