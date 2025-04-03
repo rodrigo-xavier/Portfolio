@@ -20,9 +20,6 @@ import {
   SiSelenium,
   SiAssemblyscript,
 } from "react-icons/si";
-import {
-  PiFileSqlFill,
-} from "react-icons/pi";
 import { FaMarkdown } from "react-icons/fa";
 
 function Techstack() {
@@ -54,9 +51,6 @@ function Techstack() {
       </Col>
       <Col xs={4} md={2} className="tech-icons">
         <DiGit />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <PiFileSqlFill />
       </Col>
       <Col xs={4} md={2} className="tech-icons">
         <SiMysql />
