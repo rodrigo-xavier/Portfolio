@@ -12,7 +12,6 @@ import {
   SiNextdotjs,
   SiPostgresql,
   SiDjango,
-  SiScrapy,
   SiPytest,
   SiSwagger,
   SiMysql,
@@ -30,9 +29,6 @@ function Techstack() {
       </Col>
       <Col xs={4} md={2} className="tech-icons">
         <SiDjango />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <SiScrapy />
       </Col>
       <Col xs={4} md={2} className="tech-icons">
         <DiNodejs />
