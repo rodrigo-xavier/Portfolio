@@ -4,8 +4,8 @@ import myImg from "../../Assets/avatar.svg";
 import Tilt from "react-parallax-tilt";
 import {
   AiFillGithub,
-  AiOutlineTwitter,
-  AiFillInstagram,
+  // AiOutlineTwitter,
+  // AiFillInstagram,
 } from "react-icons/ai";
 import { FaLinkedinIn } from "react-icons/fa";
 
@@ -60,9 +60,9 @@ function Home2() {
         </Row>
         <Row>
           <Col md={12} className="home-about-social">
-            <h1>FIND ME ON</h1>
+            <h1>CONHEÇA MINHAS REDES SOCIAIS</h1>
             <p>
-              Feel free to <span className="purple">connect </span>with me
+              Sinta-se livre para me <span className="purple">seguir</span>
             </p>
             <ul className="home-about-social-links">
               <li className="social-icons">
