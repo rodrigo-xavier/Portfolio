@@ -13,7 +13,6 @@ import {
   AiOutlineFundProjectionScreen,
   AiOutlineUser,
 } from "react-icons/ai";
-
 import { CgFileDocument } from "react-icons/cg";
 
 function NavBar() {
@@ -29,6 +28,15 @@ function NavBar() {
   }
 
   window.addEventListener("scroll", scrollHandler);
+
+  const switchLanguage = () => {
+    const currentPath = window.location.pathname;
+    if (currentPath.startsWith("/en")) {
+      window.location.href = "/";
+    } else {
+      window.location.href = "/en/";
+    }
+  };
 
   return (
     <Navbar
@@ -112,6 +120,14 @@ function NavBar() {
                 <AiFillStar style={{ fontSize: "1.1em" }} />
               </Button>
             </Nav.Item>
+
+            {/* Botão para trocar de idioma */}
+            <Nav.Item>
+              <Button onClick={switchLanguage} className="lang-btn">
+                {window.location.pathname.startsWith("/en") ? "🇧🇷 Português" : "🇺🇸 English"}
+              </Button>
+            </Nav.Item>
+
           </Nav>
         </Navbar.Collapse>
       </Container>
