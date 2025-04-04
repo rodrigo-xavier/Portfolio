@@ -1,9 +1,9 @@
-name: Deploy React App to GitHub Pages
+name: Deploy multilingual React app to GitHub Pages
 
 on:
-  push:
-    branches: ['master']
   workflow_dispatch:
+  push:
+    branches: ['master']  # Trigger no push da branch principal
 
 permissions:
   contents: read
@@ -15,36 +15,56 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  build-all:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+    strategy:
+      matrix:
+        branch: [master, english]  # Adicione os nomes das branchs
 
-      - name: Set up Node
+    steps:
+      - name: Checkout ${{ matrix.branch }}
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ matrix.branch }}
+          path: ${{ matrix.branch }}
+
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'npm'
 
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build React App
+      - name: Install & build site for ${{ matrix.branch }}
+        working-directory: ${{ matrix.branch }}
         run: |
-          export NODE_ENV=production
+          npm ci
           npm run build
+          mkdir -p ../dist/${{ matrix.branch == 'master' && '' || matrix.branch }}
+          mv build/* ../dist/${{ matrix.branch == 'master' && '' || matrix.branch }}
 
-      - name: Setup Pages
+      - name: Save artifact for ${{ matrix.branch }}
+        if: matrix.branch == 'master'  # Apenas uma job faz o upload no final
+        run: echo "Final artifact will be uploaded separately"
+
+  deploy:
+    needs: build-all
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout master (for dist folder)
+        uses: actions/checkout@v4
+        with:
+          ref: master
+
+      - name: Download build folder from previous job (if using artifact upload)
+        run: echo "Not required as builds are persisted in the workspace"
+
+      - name: Setup GitHub Pages
         uses: actions/configure-pages@v4
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './build'
+          path: './dist'
 
       - name: Deploy to GitHub Pages
         id: deployment
