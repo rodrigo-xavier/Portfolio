@@ -112,15 +112,6 @@ function NavBar() {
 
             {/* Botão para trocar de idioma */}
             <Nav.Item className="fork-btn">
-              <Button
-                onClick={switchLanguage}
-                className="fork-btn-inner"
-              >
-                {window.location.pathname.startsWith("Portfolio/en") ? "🇧🇷 Português" : "🇺🇸 English"}
-              </Button>
-            </Nav.Item>
-
-            <Nav.Item className="fork-btn">
               <select
                 onChange={(e) => {
                   const selectedLang = e.target.value;
@@ -142,7 +133,16 @@ function NavBar() {
               </select>
             </Nav.Item>
 
-
+            <Nav.Item className="fork-btn">
+              <Button
+                href="https://github.com/rodrigo-xavier/Portfolio"
+                target="_blank"
+                className="fork-btn-inner"
+              >
+                <CgGitFork style={{ fontSize: "1.2em" }} />{" "}
+                <AiFillStar style={{ fontSize: "1.1em" }} />
+              </Button>
+            </Nav.Item>
           </Nav>
         </Navbar.Collapse>
       </Container>
