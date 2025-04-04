@@ -741,3 +741,33 @@ button:focus {
 .fork-btn-inner::after {
   display: none !important;
 }
+
+.language-select-wrapper {
+  display: inline-block;
+  background-color: #934cce5e;
+  padding: 0.25rem 1.1rem;
+  text-align: center;
+  border-radius: 0.375rem;
+  transition: transform 0.2s ease-in-out;
+}
+
+.language-select-wrapper:hover {
+  transform: translateY(-2px);
+  background-color: #a24dd386;
+  border-color: #a24dd386;
+}
+
+.language-select {
+  background: transparent;
+  border: none;
+  font-size: 1.1em;
+  color: white;
+  outline: none;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+}
+
+.language-select option {
+  color: black;
+}

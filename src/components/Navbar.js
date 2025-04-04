@@ -124,8 +124,8 @@ function NavBar() {
               >
                 <option value="pt">🇧🇷 Português</option>
                 <option value="en">🇺🇸 English</option>
-                <option value="fr">🇫🇷 Français</option>
-                <option value="es">🇪🇸 Español</option>
+                {/* <option value="fr">🇫🇷 Français</option>
+                <option value="es">🇪🇸 Español</option> */}
               </select>
             </Nav.Item>
 
@@ -133,7 +133,7 @@ function NavBar() {
               <Button
                 href="https://github.com/rodrigo-xavier/Portfolio"
                 target="_blank"
-                className="fork-btn-inner"
+                className="language-select"
               >
                 <CgGitFork style={{ fontSize: "1.2em" }} />{" "}
                 <AiFillStar style={{ fontSize: "1.1em" }} />
