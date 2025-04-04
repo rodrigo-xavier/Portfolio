@@ -36,18 +36,12 @@ jobs:
       - name: Clear npm cache
         run: npm cache clean --force
 
-      - name: Install dependencies
-        working-directory: ./master
-        run: |
-          npm install --legacy-peer-deps
-
       - name: Install & build Portuguese site
-        working-directory: ./master
         run: |
           npm ci
           npm run build
-          mkdir -p ../dist/pt
-          mv build/* ../dist/pt/
+          mkdir -p dist/pt
+          mv build/* dist/pt/
 
       - name: Checkout English branch
         uses: actions/checkout@v4
