@@ -106,16 +106,21 @@ function NavBar() {
               <select
                 onChange={(e) => {
                   const selectedLang = e.target.value;
-                  window.location.href = `/${selectedLang}/`;
+                  const base = "/Portfolio";
+                  const url = selectedLang === "pt" ? `${base}/` : `${base}/${selectedLang}/`;
+                  window.location.href = url;
                 }}
-                className="form-select"
+                className="fork-btn-inner"
                 style={{
                   maxWidth: '150px',
                   marginRight: '10px',
                   padding: '4px 8px',
                   fontSize: '0.9rem',
                 }}
-                defaultValue={window.location.pathname.split("/")[1] || "pt"}
+                defaultValue={(() => {
+                  const path = window.location.pathname.split("/")[2];
+                  return path || "pt";
+                })()}
               >
                 <option value="pt">🇧🇷 Português</option>
                 <option value="en">🇺🇸 English</option>

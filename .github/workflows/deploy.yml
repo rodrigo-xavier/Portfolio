@@ -48,8 +48,9 @@ jobs:
           rm -rf build  # limpa build anterior
           npm ci
           npm run build
-          mkdir -p ../dist/pt
-          mv build/* ../dist/pt/
+          rm -rf ../dist  # remove pasta dist anterior para garantir root limpo
+          mkdir -p ../dist
+          mv build/* ../dist/
 
       - name: Checkout English branch
         uses: actions/checkout@v4
