@@ -110,7 +110,7 @@ function NavBar() {
                   const url = selectedLang === "pt" ? `${base}/` : `${base}/${selectedLang}/`;
                   window.location.href = url;
                 }}
-                className="form-select"
+                className="language-select"
                 style={{
                   maxWidth: '150px',
                   marginRight: '10px',
@@ -133,7 +133,7 @@ function NavBar() {
               <Button
                 href="https://github.com/rodrigo-xavier/Portfolio"
                 target="_blank"
-                className="language-select"
+                className="fork-btn-inner"
               >
                 <CgGitFork style={{ fontSize: "1.2em" }} />{" "}
                 <AiFillStar style={{ fontSize: "1.1em" }} />
