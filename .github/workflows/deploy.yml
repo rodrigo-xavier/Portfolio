@@ -1,9 +1,9 @@
 name: Deploy multilingual React app to GitHub Pages
 
 on:
-  workflow_dispatch:
   push:
-    branches: ['master']  # Trigger no push da branch principal
+    branches: ['master', 'english']  # Adicione outras branches aqui
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -15,18 +15,23 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build-all:
+  deploy:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        branch: [master, english]  # Adicione os nomes das branchs
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-      - name: Checkout ${{ matrix.branch }}
+      - name: Fetch all branches
         uses: actions/checkout@v4
         with:
-          ref: ${{ matrix.branch }}
-          path: ${{ matrix.branch }}
+          fetch-depth: 0  # Traz todas as branches e histórico completo
+
+      - name: Checkout Portuguese (master)
+        uses: actions/checkout@v4
+        with:
+          ref: master
+          path: pt
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -34,29 +39,66 @@ jobs:
           node-version: 20
           cache: 'npm'
 
-      - name: Install & build site for ${{ matrix.branch }}
-        working-directory: ${{ matrix.branch }}
+      - name: Clear npm cache
+        run: npm cache clean --force
+
+      - name: Build Portuguese site
+        working-directory: ./pt
         run: |
+          rm -rf build  # limpa build anterior
           npm ci
           npm run build
-          mkdir -p ../dist/${{ matrix.branch == 'master' && '' || matrix.branch }}
-          mv build/* ../dist/${{ matrix.branch == 'master' && '' || matrix.branch }}
+          rm -rf ../dist  # remove pasta dist anterior para garantir root limpo
+          mkdir -p ../dist
+          mv build/* ../dist/
 
-      - name: Save artifact for ${{ matrix.branch }}
-        if: matrix.branch == 'master'  # Apenas uma job faz o upload no final
-        run: echo "Final artifact will be uploaded separately"
-
-  deploy:
-    needs: build-all
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout master (for dist folder)
+      - name: Checkout English branch
         uses: actions/checkout@v4
         with:
-          ref: master
+          ref: english
+          path: en
 
-      - name: Download build folder from previous job (if using artifact upload)
-        run: echo "Not required as builds are persisted in the workspace"
+      - name: Build English site
+        working-directory: ./en
+        run: |
+          rm -rf build  # limpa build anterior
+          npm ci
+          npm run build
+          mkdir -p ../dist/en
+          mv build/* ../dist/en/
+
+      # Adicione outros idiomas abaixo com o mesmo padrão:
+      # French
+      # - name: Checkout French branch
+      #   uses: actions/checkout@v4
+      #   with:
+      #     ref: french
+      #     path: fr
+
+      # - name: Build French site
+      #   working-directory: ./fr
+      #   run: |
+      #     rm -rf build  # limpa build anterior
+      #     npm ci
+      #     npm run build
+      #     mkdir -p ../dist/fr
+      #     mv build/* ../dist/fr/
+
+      # # Spanish
+      # - name: Checkout Spanish branch
+      #   uses: actions/checkout@v4
+      #   with:
+      #     ref: spanish
+      #     path: es
+
+      # - name: Build Spanish site
+      #   working-directory: ./es
+      #   run: |
+      #     rm -rf build  # limpa build anterior
+      #     npm ci
+      #     npm run build
+      #     mkdir -p ../dist/es
+      #     mv build/* ../dist/es/
 
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v4

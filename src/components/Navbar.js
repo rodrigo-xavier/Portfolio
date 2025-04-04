@@ -29,15 +29,6 @@ function NavBar() {
 
   window.addEventListener("scroll", scrollHandler);
 
-  const switchLanguage = () => {
-    const currentPath = window.location.pathname;
-    if (currentPath.startsWith("/en")) {
-      window.location.href = "/";
-    } else {
-      window.location.href = "/en/";
-    }
-  };
-
   return (
     <Navbar
       expanded={expand}
@@ -112,12 +103,30 @@ function NavBar() {
 
             {/* Botão para trocar de idioma */}
             <Nav.Item className="fork-btn">
-              <Button
-                onClick={switchLanguage}
-                className="fork-btn-inner"
+              <select
+                onChange={(e) => {
+                  const selectedLang = e.target.value;
+                  const base = "/Portfolio";
+                  const url = selectedLang === "pt" ? `${base}/` : `${base}/${selectedLang}/`;
+                  window.location.href = url;
+                }}
+                className="form-select"
+                style={{
+                  maxWidth: '150px',
+                  marginRight: '10px',
+                  padding: '4px 8px',
+                  fontSize: '0.9rem',
+                }}
+                defaultValue={(() => {
+                  const path = window.location.pathname.split("/")[2];
+                  return path || "pt";
+                })()}
               >
-                {window.location.pathname.startsWith("/en") ? "🇧🇷 Português" : "🇺🇸 English"}
-              </Button>
+                <option value="pt">🇧🇷 Português</option>
+                <option value="en">🇺🇸 English</option>
+                <option value="fr">🇫🇷 Français</option>
+                <option value="es">🇪🇸 Español</option>
+              </select>
             </Nav.Item>
 
             <Nav.Item className="fork-btn">
@@ -130,7 +139,6 @@ function NavBar() {
                 <AiFillStar style={{ fontSize: "1.1em" }} />
               </Button>
             </Nav.Item>
-
           </Nav>
         </Navbar.Collapse>
       </Container>

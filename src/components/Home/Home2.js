@@ -51,7 +51,7 @@ function Home2() {
               E subir no Github-pages
               <br />
               <br />
-              Adoro criar e brincar e desenvolver projetinhos {" "}
+              Adoro criar, brincar e desenvolver projetinhos {" "}
               <b className="purple">Eletrônicos</b> com
               <i>
                 <b className="purple">
