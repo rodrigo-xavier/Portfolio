@@ -64,7 +64,7 @@ function NavBar() {
                 to="/about"
                 onClick={() => updateExpanded(false)}
               >
-                <AiOutlineUser style={{ marginBottom: "2px" }} /> Sobre Mim
+                <AiOutlineUser style={{ marginBottom: "2px" }} /> About
               </Nav.Link>
             </Nav.Item>
 
@@ -77,7 +77,7 @@ function NavBar() {
                 <AiOutlineFundProjectionScreen
                   style={{ marginBottom: "2px" }}
                 />{" "}
-                Meus Projetos
+                Projects
               </Nav.Link>
             </Nav.Item>
 
@@ -87,7 +87,7 @@ function NavBar() {
                 to="/resume"
                 onClick={() => updateExpanded(false)}
               >
-                <CgFileDocument style={{ marginBottom: "2px" }} /> Currículo
+                <CgFileDocument style={{ marginBottom: "2px" }} /> Resume
               </Nav.Link>
             </Nav.Item>
 
@@ -122,7 +122,7 @@ function NavBar() {
                   return path || "pt";
                 })()}
               >
-                <option value="pt">🇧🇷 Português</option>
+                <option value="pt">🇧🇷 Portuguese</option>
                 <option value="en">🇺🇸 English</option>
                 {/* <option value="fr">🇫🇷 Français</option>
                 <option value="es">🇪🇸 Español</option> */}

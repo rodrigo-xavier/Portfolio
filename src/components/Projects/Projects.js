@@ -13,10 +13,10 @@ function Projects() {
       <Particle />
       <Container>
         <h1 className="project-heading">
-          Meus <strong className="purple">Trabalhos </strong>Mais Recentes
+          My <strong className="purple">Most Recent </strong>Works
         </h1>
         <p style={{ color: "white" }}>
-          Veja aqui alguns projetos que tenho trabalhado recentemente
+          Here are some projects I’ve been working on recently
         </p>
         <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
           <Col md={4} className="project-card">
@@ -24,7 +24,7 @@ function Projects() {
               imgPath={vendaInFocus}
               isBlog={false}
               title="Venda In Focus"
-              description="Web Scraping para extração e análise de dados em marketplaces, gerando insights de produtos. Aplicando modelagem estatística, normalização, funções de ativação, rotação de proxies e limpeza de dados."
+              description="Web scraping for extracting and analyzing data from marketplaces, generating product insights. Applying statistical modeling, normalization, activation functions, proxy rotation, and data cleaning."
               demoLink="https://www.appsheet.com/start/de3fc0d6-eb1e-4b79-9080-fec81e78bdd5?platform=desktop"
             />
           </Col>
@@ -33,7 +33,7 @@ function Projects() {
               imgPath={gestor}
               isBlog={false}
               title="Gestor"
-              description="Sistema para gestão de equipamentos e agendamentos cirúrgicos. Com importação automática de dados de planilhas"
+              description="System for managing equipment and surgical scheduling, with automatic spreadsheet data import."
               demoLink="https://gestor-cirurgico.web.app/"
             />
           </Col>
@@ -43,7 +43,7 @@ function Projects() {
               imgPath={pincelia}
               isBlog={false}
               title="Pincelia"
-              description="Plataforma de prospecção de clientes para edição de imagens com Inteligência Artificial"
+              description="Client prospecting platform for AI-powered image editing."
               demoLink="https://rodrigo-xavier.github.io/pincelia/"
             />
           </Col>
@@ -53,7 +53,7 @@ function Projects() {
               imgPath={about}
               isBlog={false}
               title="About"
-              description="Sistema para criação de currículos em PDF e exibição de perfil profissiona"
+              description="System for creating PDF resumes and showcasing professional profiles."
               ghLink="https://github.com/rodrigo-xavier/old-about"
             />
           </Col>

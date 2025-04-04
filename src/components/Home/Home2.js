@@ -16,48 +16,43 @@ function Home2() {
         <Row>
           <Col md={8} className="home-about-description">
             <h1 style={{ fontSize: "2.6em" }}>
-              UMA BREVE <span className="purple"> INTRODUÇÃO </span>
+              A BRIEF <span className="purple"> INTRODUCTION </span>
             </h1>
             <p className="home-about-body">
-              Programação é minha paixão, adoro resolver problemas de lógica
-              e deixar os sitemas mais eficientes, robustos e otimizados :)
+              Programming is my passion — I love solving logic problems
+              and making systems more efficient, robust, and optimized :)
               <br />
-              <br />Sou fluente nos clássicos como
+              <br />I’m fluent in the classics like
               <i>
-                <b className="purple"> C/C++, Javascript e Python. 🦊</b>
+                <b className="purple"> C/C++, Javascript, and Python. 🦊</b>
               </i>
               <br />
               <br />
-              Meu campo de interesse é {" "}
-              <b className="purple">Inteligência Artificial</b> seguido de {" "}
-              <b className="purple">Embarcados</b>,
-              mas também adoro Desenvolvimento Web.
+              My main field of interest is{" "}
+              <b className="purple">Artificial Intelligence</b> followed by{" "}
+              <b className="purple">Embedded Systems</b>,
+              but I also love Web Development.
               <br />
               <br />
-              De vez em quando, gosto de desenvolver animações com {" "}
-              <b className="purple">Node.js</b> e
+              From time to time, I enjoy developing animations with{" "}
+              <b className="purple">Node.js</b> and
               <i>
                 <b className="purple">
                   {" "}
-                  Bibliotecas e Frameworks Modernos Javascript
-                  {" "}
+                  modern JavaScript libraries and frameworks{" "}
                 </b>
               </i>
-              como
+              like
               <i>
-                <b className="purple"> React.js e Next.js</b>
+                <b className="purple"> React.js and Next.js</b>
               </i>
-              {" "}
-              E subir no Github-pages
+              {" "} and deploying them to GitHub Pages.
               <br />
               <br />
-              Adoro criar, brincar e desenvolver projetinhos {" "}
-              <b className="purple">Eletrônicos</b> com
+              I love creating, playing, and building little{" "}
+              <b className="purple">electronic projects</b> using
               <i>
-                <b className="purple">
-                  {" "}
-                  Arduino e Raspberry Pi
-                </b>
+                <b className="purple"> Arduino and Raspberry Pi</b>
               </i>
             </p>
           </Col>
@@ -69,9 +64,9 @@ function Home2() {
         </Row>
         <Row>
           <Col md={12} className="home-about-social">
-            <h1>MINHAS REDES PROFISSIONAIS</h1>
+            <h1>MY PROFESSIONAL NETWORKS</h1>
             <p>
-              Sinta-se livre para me <span className="purple">seguir</span>
+              Feel free to <span className="purple">connect with me</span>
             </p>
             <ul className="home-about-social-links">
               <li className="social-icons">
@@ -121,4 +116,5 @@ function Home2() {
     </Container>
   );
 }
+
 export default Home2;
