@@ -110,6 +110,16 @@ function NavBar() {
               </Nav.Link>
             </Nav.Item>
 
+            {/* Botão para trocar de idioma */}
+            <Nav.Item className="fork-btn">
+              <Button
+                onClick={switchLanguage}
+                className="fork-btn-inner"
+              >
+                {window.location.pathname.startsWith("/en") ? "🇧🇷 Português" : "🇺🇸 English"}
+              </Button>
+            </Nav.Item>
+
             <Nav.Item className="fork-btn">
               <Button
                 href="https://github.com/rodrigo-xavier/Portfolio"
@@ -118,16 +128,6 @@ function NavBar() {
               >
                 <CgGitFork style={{ fontSize: "1.2em" }} />{" "}
                 <AiFillStar style={{ fontSize: "1.1em" }} />
-              </Button>
-            </Nav.Item>
-
-            {/* Botão para trocar de idioma */}
-            <Nav.Item className="fork-btn">
-              <Button
-                onClick={switchLanguage}
-                className="fork-btn-inner"
-              >
-                {window.location.pathname.startsWith("/en") ? "🇧🇷 Português" : "🇺🇸 English"}
               </Button>
             </Nav.Item>
 
