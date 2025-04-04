@@ -26,6 +26,8 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0  # Traz todas as branches e histórico completo
+          ref: master
+          path: pt
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
