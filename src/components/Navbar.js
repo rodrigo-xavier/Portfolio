@@ -29,13 +29,26 @@ function NavBar() {
 
   window.addEventListener("scroll", scrollHandler);
 
+  const languageMap = {
+    "/pt/": "🇧🇷 Português",
+    "/en/": "🇺🇸 English",
+    // "/es/": "🇪🇸 Español",
+    // "/fr/": "🇫🇷 Français",
+  };
+
   const switchLanguage = () => {
     const currentPath = window.location.pathname;
-    if (currentPath.startsWith("/en")) {
-      window.location.href = "/";
-    } else {
-      window.location.href = "/en/";
+    let newPath = "/pt/"; // Default para português
+
+    if (currentPath.startsWith("/pt")) {
+      newPath = "/en/";
+    } else if (currentPath.startsWith("/en")) {
+      newPath = "/es/";
+    } else if (currentPath.startsWith("/es")) {
+      newPath = "/fr/";
     }
+
+    window.location.href = newPath;
   };
 
   return (
@@ -112,11 +125,8 @@ function NavBar() {
 
             {/* Botão para trocar de idioma */}
             <Nav.Item className="fork-btn">
-              <Button
-                onClick={switchLanguage}
-                className="fork-btn-inner"
-              >
-                {window.location.pathname.startsWith("/en") ? "🇧🇷 Português" : "🇺🇸 English"}
+              <Button onClick={switchLanguage} className="fork-btn-inner">
+                {languageMap[window.location.pathname] || "🇺🇸 English"}
               </Button>
             </Nav.Item>
 
@@ -130,7 +140,6 @@ function NavBar() {
                 <AiFillStar style={{ fontSize: "1.1em" }} />
               </Button>
             </Nav.Item>
-
           </Nav>
         </Navbar.Collapse>
       </Container>

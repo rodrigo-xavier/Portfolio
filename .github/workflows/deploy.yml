@@ -1,9 +1,9 @@
 name: Deploy multilingual React app to GitHub Pages
 
 on:
-  workflow_dispatch:
   push:
-    branches: ['master']  # Trigger no push da branch principal
+    branches: ['master', 'english']  # Adicione mais idiomas conforme necessário
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -15,18 +15,18 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build-all:
+  deploy:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        branch: [master, english]  # Adicione os nomes das branchs
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-      - name: Checkout ${{ matrix.branch }}
+      - name: Checkout master (Portuguese)
         uses: actions/checkout@v4
         with:
-          ref: ${{ matrix.branch }}
-          path: ${{ matrix.branch }}
+          ref: master
+          path: master
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -34,29 +34,27 @@ jobs:
           node-version: 20
           cache: 'npm'
 
-      - name: Install & build site for ${{ matrix.branch }}
-        working-directory: ${{ matrix.branch }}
+      - name: Install & build Portuguese site
+        working-directory: ./master
         run: |
           npm ci
           npm run build
-          mkdir -p ../dist/${{ matrix.branch == 'master' && '' || matrix.branch }}
-          mv build/* ../dist/${{ matrix.branch == 'master' && '' || matrix.branch }}
+          mkdir -p ../dist/pt
+          mv build/* ../dist/pt/
 
-      - name: Save artifact for ${{ matrix.branch }}
-        if: matrix.branch == 'master'  # Apenas uma job faz o upload no final
-        run: echo "Final artifact will be uploaded separately"
-
-  deploy:
-    needs: build-all
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout master (for dist folder)
+      - name: Checkout English branch
         uses: actions/checkout@v4
         with:
-          ref: master
+          ref: english
+          path: english
 
-      - name: Download build folder from previous job (if using artifact upload)
-        run: echo "Not required as builds are persisted in the workspace"
+      - name: Install & build English site
+        working-directory: ./english
+        run: |
+          npm ci
+          npm run build
+          mkdir -p ../dist/en
+          mv build/* ../dist/en/
 
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v4
