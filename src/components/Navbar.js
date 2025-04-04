@@ -123,7 +123,7 @@ function NavBar() {
 
             {/* Botão para trocar de idioma */}
             <Nav.Item>
-              <Button onClick={switchLanguage} className="lang-btn">
+              <Button onClick={switchLanguage} className="fork-btn-inner">
                 {window.location.pathname.startsWith("/en") ? "🇧🇷 Português" : "🇺🇸 English"}
               </Button>
             </Nav.Item>

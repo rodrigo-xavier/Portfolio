@@ -14,7 +14,7 @@ function Footer() {
     <Container fluid className="footer">
       <Row>
         <Col md="4" className="footer-copywright">
-          <h3>By Rodrigo M. Xavier </h3>
+          <a href="https://storyset.com/work">Work illustrations by Storyset</a>
         </Col>
         <Col md="4" className="footer-copywright">
           <h3>Copyright © {year} RX</h3>

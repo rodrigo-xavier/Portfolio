@@ -16,7 +16,7 @@ function Home2() {
         <Row>
           <Col md={8} className="home-about-description">
             <h1 style={{ fontSize: "2.6em" }}>
-              UMA BREVE <span className="purple"> INTRODUÇÃO </span> SOBRE MIM
+              UMA BREVE <span className="purple"> INTRODUÇÃO </span>
             </h1>
             <p className="home-about-body">
               Programação é minha paixão, adoro resolver problemas de lógica
@@ -28,28 +28,30 @@ function Home2() {
               </i>
               <br />
               <br />
-              Meu campo de interesse é
-              <b className="purple">Inteligência Artificial</b> seguido de
+              Meu campo de interesse é {" "}
+              <b className="purple">Inteligência Artificial</b> seguido de {" "}
               <b className="purple">Embarcados</b>,
-              Mas também adoro Desenvolvimento Web.
+              mas também adoro Desenvolvimento Web.
               <br />
               <br />
-              De vez em quando, gosto de desenvolver animações com
+              De vez em quando, gosto de desenvolver animações com {" "}
               <b className="purple">Node.js</b> e
               <i>
                 <b className="purple">
                   {" "}
                   Bibliotecas e Frameworks Modernos Javascript
+                  {" "}
                 </b>
               </i>
               como
               <i>
                 <b className="purple"> React.js e Next.js</b>
               </i>
+              {" "}
               E subir no Github-pages
               <br />
               <br />
-              Adoro criar e brincar e desenvolver projetinhos
+              Adoro criar e brincar e desenvolver projetinhos {" "}
               <b className="purple">Eletrônicos</b> com
               <i>
                 <b className="purple">
