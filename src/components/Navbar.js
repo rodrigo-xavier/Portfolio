@@ -110,7 +110,7 @@ function NavBar() {
                   const url = selectedLang === "pt" ? `${base}/` : `${base}/${selectedLang}/`;
                   window.location.href = url;
                 }}
-                className="fork-btn-inner"
+                className="form-select"
                 style={{
                   maxWidth: '150px',
                   marginRight: '10px',
