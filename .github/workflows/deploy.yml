@@ -22,17 +22,19 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-      - name: Checkout master (Portuguese)
+      - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          ref: master
-          path: master
+          fetch-depth: 0  # Traz todas as branches e histórico completo
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'npm'
+
+      - name: Clear npm cache
+        run: npm cache clean --force
 
       - name: Install dependencies
         working-directory: ./master
