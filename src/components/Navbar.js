@@ -29,15 +29,6 @@ function NavBar() {
 
   window.addEventListener("scroll", scrollHandler);
 
-  const switchLanguage = () => {
-    const currentPath = window.location.pathname;
-    if (currentPath.startsWith("/en")) {
-      window.location.href = "/";
-    } else {
-      window.location.href = "/en/";
-    }
-  };
-
   return (
     <Navbar
       expanded={expand}

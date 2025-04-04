@@ -2,7 +2,7 @@ name: Deploy multilingual React app to GitHub Pages
 
 on:
   push:
-    branches: ['master', 'english', 'french', 'spanish']  # Adicione outras branches aqui
+    branches: ['master', 'english']  # Adicione outras branches aqui
   workflow_dispatch:
 
 permissions:
@@ -68,36 +68,36 @@ jobs:
 
       # Adicione outros idiomas abaixo com o mesmo padrão:
       # French
-      - name: Checkout French branch
-        uses: actions/checkout@v4
-        with:
-          ref: french
-          path: fr
+      # - name: Checkout French branch
+      #   uses: actions/checkout@v4
+      #   with:
+      #     ref: french
+      #     path: fr
 
-      - name: Build French site
-        working-directory: ./fr
-        run: |
-          rm -rf build  # limpa build anterior
-          npm ci
-          npm run build
-          mkdir -p ../dist/fr
-          mv build/* ../dist/fr/
+      # - name: Build French site
+      #   working-directory: ./fr
+      #   run: |
+      #     rm -rf build  # limpa build anterior
+      #     npm ci
+      #     npm run build
+      #     mkdir -p ../dist/fr
+      #     mv build/* ../dist/fr/
 
-      # Spanish
-      - name: Checkout Spanish branch
-        uses: actions/checkout@v4
-        with:
-          ref: spanish
-          path: es
+      # # Spanish
+      # - name: Checkout Spanish branch
+      #   uses: actions/checkout@v4
+      #   with:
+      #     ref: spanish
+      #     path: es
 
-      - name: Build Spanish site
-        working-directory: ./es
-        run: |
-          rm -rf build  # limpa build anterior
-          npm ci
-          npm run build
-          mkdir -p ../dist/es
-          mv build/* ../dist/es/
+      # - name: Build Spanish site
+      #   working-directory: ./es
+      #   run: |
+      #     rm -rf build  # limpa build anterior
+      #     npm ci
+      #     npm run build
+      #     mkdir -p ../dist/es
+      #     mv build/* ../dist/es/
 
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v4
