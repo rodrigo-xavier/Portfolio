@@ -22,10 +22,14 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-      - name: Checkout Portuguese (master)
+      - name: Fetch all branches
         uses: actions/checkout@v4
         with:
           fetch-depth: 0  # Traz todas as branches e histórico completo
+
+      - name: Checkout Portuguese (master)
+        uses: actions/checkout@v4
+        with:
           ref: master
           path: pt
 
