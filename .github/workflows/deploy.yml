@@ -2,7 +2,7 @@ name: Deploy multilingual React app to GitHub Pages
 
 on:
   push:
-    branches: ['master', 'english']  # Adicione mais idiomas conforme necessário
+    branches: ['master', 'english', 'french', 'spanish']  # Adicione outras branches aqui
   workflow_dispatch:
 
 permissions:
@@ -22,10 +22,11 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-      - name: Checkout repository
+      - name: Checkout Portuguese (master)
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Traz todas as branches e histórico completo
+          ref: master
+          path: pt
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -33,29 +34,58 @@ jobs:
           node-version: 20
           cache: 'npm'
 
-      - name: Clear npm cache
-        run: npm cache clean --force
-
-      - name: Install & build Portuguese site
+      - name: Build Portuguese site
+        working-directory: ./pt
         run: |
           npm ci
           npm run build
-          mkdir -p dist/pt
-          mv build/* dist/pt/
+          mkdir -p ../dist/pt
+          mv build/* ../dist/pt/
 
       - name: Checkout English branch
         uses: actions/checkout@v4
         with:
           ref: english
-          path: english
+          path: en
 
-      - name: Install & build English site
-        working-directory: ./english
+      - name: Build English site
+        working-directory: ./en
         run: |
           npm ci
           npm run build
           mkdir -p ../dist/en
           mv build/* ../dist/en/
+
+      # Adicione outros idiomas abaixo com o mesmo padrão:
+      # French
+      - name: Checkout French branch
+        uses: actions/checkout@v4
+        with:
+          ref: french
+          path: fr
+
+      - name: Build French site
+        working-directory: ./fr
+        run: |
+          npm ci
+          npm run build
+          mkdir -p ../dist/fr
+          mv build/* ../dist/fr/
+
+      # Spanish
+      - name: Checkout Spanish branch
+        uses: actions/checkout@v4
+        with:
+          ref: spanish
+          path: es
+
+      - name: Build Spanish site
+        working-directory: ./es
+        run: |
+          npm ci
+          npm run build
+          mkdir -p ../dist/es
+          mv build/* ../dist/es/
 
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v4

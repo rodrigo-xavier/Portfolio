@@ -29,26 +29,13 @@ function NavBar() {
 
   window.addEventListener("scroll", scrollHandler);
 
-  const languageMap = {
-    "/pt/": "🇧🇷 Português",
-    "/en/": "🇺🇸 English",
-    // "/es/": "🇪🇸 Español",
-    // "/fr/": "🇫🇷 Français",
-  };
-
   const switchLanguage = () => {
     const currentPath = window.location.pathname;
-    let newPath = "/pt/"; // Default para português
-
-    if (currentPath.startsWith("/pt")) {
-      newPath = "/en/";
-    } else if (currentPath.startsWith("/en")) {
-      newPath = "/es/";
-    } else if (currentPath.startsWith("/es")) {
-      newPath = "/fr/";
+    if (currentPath.startsWith("/en")) {
+      window.location.href = "/";
+    } else {
+      window.location.href = "/en/";
     }
-
-    window.location.href = newPath;
   };
 
   return (
@@ -125,21 +112,37 @@ function NavBar() {
 
             {/* Botão para trocar de idioma */}
             <Nav.Item className="fork-btn">
-              <Button onClick={switchLanguage} className="fork-btn-inner">
-                {languageMap[window.location.pathname] || "🇺🇸 English"}
+              <Button
+                onClick={switchLanguage}
+                className="fork-btn-inner"
+              >
+                {window.location.pathname.startsWith("Portfolio/en") ? "🇧🇷 Português" : "🇺🇸 English"}
               </Button>
             </Nav.Item>
 
             <Nav.Item className="fork-btn">
-              <Button
-                href="https://github.com/rodrigo-xavier/Portfolio"
-                target="_blank"
-                className="fork-btn-inner"
+              <select
+                onChange={(e) => {
+                  const selectedLang = e.target.value;
+                  window.location.href = `/${selectedLang}/`;
+                }}
+                className="form-select"
+                style={{
+                  maxWidth: '150px',
+                  marginRight: '10px',
+                  padding: '4px 8px',
+                  fontSize: '0.9rem',
+                }}
+                defaultValue={window.location.pathname.split("/")[1] || "pt"}
               >
-                <CgGitFork style={{ fontSize: "1.2em" }} />{" "}
-                <AiFillStar style={{ fontSize: "1.1em" }} />
-              </Button>
+                <option value="pt">🇧🇷 Português</option>
+                <option value="en">🇺🇸 English</option>
+                <option value="fr">🇫🇷 Français</option>
+                <option value="es">🇪🇸 Español</option>
+              </select>
             </Nav.Item>
+
+
           </Nav>
         </Navbar.Collapse>
       </Container>
