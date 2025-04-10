@@ -129,16 +129,16 @@ function NavBar() {
               </select>
             </Nav.Item>
 
-            <Nav.Item className="fork-btn">
-              <Button
-                href="https://github.com/rodrigo-xavier/Portfolio"
-                target="_blank"
-                className="fork-btn-inner"
-              >
-                <CgGitFork style={{ fontSize: "1.2em" }} />{" "}
-                <AiFillStar style={{ fontSize: "1.1em" }} />
-              </Button>
-            </Nav.Item>
+            // <Nav.Item className="fork-btn">
+            //   <Button
+            //     href="https://github.com/rodrigo-xavier/Portfolio"
+            //     target="_blank"
+            //     className="fork-btn-inner"
+            //   >
+            //     <CgGitFork style={{ fontSize: "1.2em" }} />{" "}
+            //     <AiFillStar style={{ fontSize: "1.1em" }} />
+            //   </Button>
+            // </Nav.Item>
           </Nav>
         </Navbar.Collapse>
       </Container>
